@@ -4,6 +4,8 @@ class Card
   def initialize(value, suit)
     @value = value
     @suit = suit
-  end 
+  end
 
 end
+
+card = Card.new("10", "Hearts")

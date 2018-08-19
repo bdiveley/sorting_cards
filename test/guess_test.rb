@@ -2,6 +2,7 @@ require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/guess'
 require './lib/card'
+require 'pry'
 
 class GuessTest < Minitest::Test
 
@@ -21,5 +22,11 @@ class GuessTest < Minitest::Test
     card = Card.new("10", "Hearts")
     guess = Guess.new("10 of Hearts", card)
     assert_equal card, guess.card
+  end
+
+  def test_correct?
+    card = Card.new("10", "Hearts")
+    guess = Guess.new("10 of Hearts", card)
+    assert guess.correct?
   end
 end
