@@ -6,6 +6,4 @@ class Card
     @suit = suit
   end
 
-end
-
-card = Card.new("10", "Hearts")
+end 
