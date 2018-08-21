@@ -15,7 +15,7 @@ class DeckTest < Minitest::Test
   end
 
   def test_instance_variable_count
-    card_1 = Card.new("3","Hearts")
+    card_1 = Card.new("Ace","Hearts")
     card_2 = Card.new("4", "Clubs")
     card_3 = Card.new("5", "Diamonds")
     deck = Deck.new([Card.new("3","Hearts"), Card.new("4", "Clubs"), Card.new("5", "Diamonds")])
@@ -23,11 +23,11 @@ class DeckTest < Minitest::Test
   end
 
   def test_sort
-    card_1 = Card.new("4","Hearts")
-    card_2 = Card.new("19", "Clubs")
-    card_3 = Card.new("3", "Diamonds")
+    card_1 = Card.new("Ace","Hearts")
+    card_2 = Card.new("10", "Clubs")
+    card_3 = Card.new("Queen", "Diamonds")
     card_4 = Card.new("5", "Spades")
-    card_5 = Card.new("1", "Diamonds")
+    card_5 = Card.new("King", "Diamonds")
     deck = Deck.new([card_1, card_2, card_3, card_4, card_5])
     binding.pry
     assert_equal [card_1, card_2], deck.compare_two_elements
