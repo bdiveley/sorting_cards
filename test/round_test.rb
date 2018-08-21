@@ -26,12 +26,20 @@ class RoundTest < Minitest::Test
     assert_equal card_1, round.current_card
   end
 
-  def test_record_guess
+  def test_record_guess_creates_a_guess_object
     card_1 = Card.new("3","Hearts")
     deck = Deck.new([card_1])
     round = Round.new(deck)
     actual = round.record_guess({value: "3", suit: "Hearts"})
     assert_instance_of Guess, actual
+  end
+
+  def test_record_guess_holds_current_card
+    card_1 = Card.new("3","Hearts")
+    deck = Deck.new([card_1])
+    round = Round.new(deck)
+    actual = round.record_guess({value: "3", suit: "Hearts"})
+    assert_equal card_1, actual.card
   end
 
   def test_guesses_count
