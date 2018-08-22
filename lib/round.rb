@@ -1,9 +1,6 @@
 class Round
   attr_accessor :deck,
                 :guesses,
-                :cards,
-                :response,
-                :card,
                 :current_card,
                 :num_correct
 
@@ -18,6 +15,7 @@ class Round
     response = guess.values[0] + " of " + guess.values[1]
     new_guess = Guess.new(response, @current_card)
     @guesses << new_guess
+
     return new_guess
   end
 

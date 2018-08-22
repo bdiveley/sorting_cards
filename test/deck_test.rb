@@ -61,7 +61,8 @@ class DeckTest < Minitest::Test
     card_2 = Card.new("4", "Spades")
     deck = Deck.new([Card.new("Ace","Hearts"), Card.new("4", "Spades")])
 
-    actual = deck.swap(0,1)
+    result = deck.compare_two_cards(0,1)
+    actual = deck.swap(result)
     assert_equal deck.cards[0], actual
   end
 
@@ -70,7 +71,8 @@ class DeckTest < Minitest::Test
     card_2 = Card.new("4", "Spades")
     deck = Deck.new([Card.new("4","Clubs"), Card.new("4", "Spades")])
 
-    actual = deck.swap(0,1)
+    result = deck.compare_two_cards(0,1)
+    actual = deck.swap(result)
 
     assert_equal deck.cards[0], actual
   end
@@ -96,4 +98,5 @@ class DeckTest < Minitest::Test
 
     assert_equal [card_1, card_3, card_2, card_5, card_4], deck.sort
   end
+
 end
