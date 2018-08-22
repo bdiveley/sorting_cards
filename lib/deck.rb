@@ -38,21 +38,14 @@ class Deck
     return cards
   end
 
-  def swap(result)
-    if result
-      cards[index_1], cards[index_2] = cards[index_2], cards[index_1]
-    end
-    return cards[index_1]
-  end
-
   def compare_two_cards(index_1, index_2)
     if cards[index_1].values_to_numbers.to_i > cards[index_2].values_to_numbers.to_i
-      return true
+      return cards[index_2]
     elsif
       cards[index_1].values_to_numbers.to_i == cards[index_2].values_to_numbers.to_i && cards[index_1].suits_to_numbers.to_i > cards[index_2].suits_to_numbers.to_i
-      return true
+      return cards[index_2]
     else
-      return false
+      return cards[index_1]
     end
   end
 

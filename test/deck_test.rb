@@ -29,7 +29,7 @@ class DeckTest < Minitest::Test
     card_2 = Card.new("4", "Clubs")
     deck = Deck.new([Card.new("Ace","Hearts"), Card.new("4", "Clubs")])
 
-    assert deck.compare_two_cards(0,1)
+    assert_equal deck.cards[1], deck.compare_two_cards(0,1)
   end
 
   def test_whether_one_value_is_less
@@ -37,7 +37,7 @@ class DeckTest < Minitest::Test
     card_2 = Card.new("Ace", "Clubs")
     deck = Deck.new([Card.new("4","Hearts"), Card.new("Ace", "Clubs")])
 
-    refute deck.compare_two_cards(0,1)
+    assert_equal deck.cards[0], deck.compare_two_cards(0,1)
   end
 
   def test_whether_one_suit_is_greater
@@ -45,7 +45,7 @@ class DeckTest < Minitest::Test
     card_2 = Card.new("4", "Clubs")
     deck = Deck.new([Card.new("4","Hearts"), Card.new("4", "Clubs")])
 
-    assert deck.compare_two_cards(0,1)
+    assert_equal deck.cards[1], deck.compare_two_cards(0,1)
   end
 
   def test_whether_one_suit_is_less
@@ -53,31 +53,11 @@ class DeckTest < Minitest::Test
     card_2 = Card.new("4", "Spades")
     deck = Deck.new([Card.new("4","Hearts"), Card.new("4", "Spades")])
 
-    refute deck.compare_two_cards(0,1)
-  end
-
-  def test_swap_happens_when_needed
-    card_1 = Card.new("Ace","Hearts")
-    card_2 = Card.new("4", "Spades")
-    deck = Deck.new([Card.new("Ace","Hearts"), Card.new("4", "Spades")])
-
-    result = deck.compare_two_cards(0,1)
-    actual = deck.swap(result)
-    assert_equal deck.cards[0], actual
-  end
-
-  def test_swap_when_not_needed
-    card_1 = Card.new("4","Clubs")
-    card_2 = Card.new("4", "Spades")
-    deck = Deck.new([Card.new("4","Clubs"), Card.new("4", "Spades")])
-
-    result = deck.compare_two_cards(0,1)
-    actual = deck.swap(result)
-
-    assert_equal deck.cards[0], actual
+    assert_equal deck.cards[0], deck.compare_two_cards(0,1)
   end
 
   def test_one_iteration_of_sort_is_successful
+    skip
     card_1 = Card.new("Ace","Hearts")
     card_2 = Card.new("1", "Clubs")
     card_3 = Card.new("Queen", "Diamonds")
@@ -85,10 +65,14 @@ class DeckTest < Minitest::Test
     card_5 = Card.new("6", "Diamonds")
     deck = Deck.new([card_1, card_2, card_3, card_4, card_5])
 
-    assert_equal [card_2, card_3, card_4, card_5, card_1], deck.one_sort
+    result = deck.compare_two_cards(0,1)
+    swapped = deck.swap(result)
+
+    assert_equal [card_2, card_3, card_4, card_5, card_1], deck.one_sort(swapped)
   end
 
   def test_sort
+    skip
     card_1 = Card.new("4","Hearts")
     card_2 = Card.new("Jack", "Clubs")
     card_3 = Card.new("5", "Diamonds")
