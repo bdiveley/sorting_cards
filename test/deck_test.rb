@@ -24,58 +24,7 @@ class DeckTest < Minitest::Test
     assert_equal 3, deck.count
   end
 
-  def test_whether_one_value_is_greater
-    card_1 = Card.new("Ace","Hearts")
-    card_2 = Card.new("4", "Clubs")
-    deck = Deck.new([Card.new("Ace","Hearts"), Card.new("4", "Clubs")])
-
-    assert deck.compare_two_cards(0,1)
-  end
-
-  def test_whether_one_value_is_less
-    card_1 = Card.new("4","Hearts")
-    card_2 = Card.new("Ace", "Clubs")
-    deck = Deck.new([Card.new("4","Hearts"), Card.new("Ace", "Clubs")])
-
-    refute deck.compare_two_cards(0,1)
-  end
-
-  def test_whether_one_suit_is_greater
-    card_1 = Card.new("4","Hearts")
-    card_2 = Card.new("4", "Clubs")
-    deck = Deck.new([Card.new("4","Hearts"), Card.new("4", "Clubs")])
-
-    assert deck.compare_two_cards(0,1)
-  end
-
-  def test_whether_one_suit_is_less
-    card_1 = Card.new("4","Hearts")
-    card_2 = Card.new("4", "Spades")
-    deck = Deck.new([Card.new("4","Hearts"), Card.new("4", "Spades")])
-
-    refute deck.compare_two_cards(0,1)
-  end
-
-  def test_swap_happens_when_needed
-    card_1 = Card.new("Ace","Hearts")
-    card_2 = Card.new("4", "Spades")
-    deck = Deck.new([Card.new("Ace","Hearts"), Card.new("4", "Spades")])
-
-    actual = deck.swap(0,1)
-    assert_equal deck.cards[0], actual
-  end
-
-  def test_swap_when_not_needed
-    card_1 = Card.new("4","Clubs")
-    card_2 = Card.new("4", "Spades")
-    deck = Deck.new([Card.new("4","Clubs"), Card.new("4", "Spades")])
-
-    actual = deck.swap(0,1)
-
-    assert_equal deck.cards[0], actual
-  end
-
-  def test_one_iteration_of_sort_is_successful
+  def test_round_one_of_sorting_successful
     card_1 = Card.new("Ace","Hearts")
     card_2 = Card.new("1", "Clubs")
     card_3 = Card.new("Queen", "Diamonds")
@@ -83,7 +32,7 @@ class DeckTest < Minitest::Test
     card_5 = Card.new("6", "Diamonds")
     deck = Deck.new([card_1, card_2, card_3, card_4, card_5])
 
-    assert_equal [card_2, card_3, card_4, card_5, card_1], deck.one_sort
+    assert_equal [card_2, card_3, card_4, card_5, card_1], deck.sort_one_round
   end
 
   def test_sort
@@ -96,4 +45,5 @@ class DeckTest < Minitest::Test
 
     assert_equal [card_1, card_3, card_2, card_5, card_4], deck.sort
   end
+
 end

@@ -1,9 +1,12 @@
 class Guess
-  attr_accessor :response, :card, :value, :suit, :correct
+  attr_accessor :response,
+                :card,
+                :correct
 
   def initialize(response, card)
     @response = response
     @card = card
+    @correct = true
   end
 
   def correct?
